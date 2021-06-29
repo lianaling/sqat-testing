@@ -1,0 +1,90 @@
+// Copyright 2015-2021 Signal Messenger, LLC
+// SPDX-License-Identifier: AGPL-3.0-only
+
+#app-container {
+  height: 100%;
+}
+
+.conversation-stack,
+.new-conversation,
+.inbox,
+.inbox-container,
+.gutter {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.inbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollable {
+  height: 100%;
+  overflow: auto;
+}
+
+.gutter {
+  @include light-theme {
+    background-color: $color-gray-02;
+
+    ::-webkit-scrollbar-track {
+      background: $color-gray-02;
+    }
+    ::-webkit-scrollbar-thumb {
+      border: 2px solid $color-gray-02;
+    }
+  }
+  @include dark-theme {
+    background-color: $color-gray-80;
+
+    ::-webkit-scrollbar-track {
+      background: $color-gray-80;
+    }
+    ::-webkit-scrollbar-thumb {
+      border: 2px solid $color-gray-80;
+    }
+  }
+
+  float: left;
+  width: $left-pane-width;
+  user-select: none;
+
+  .content {
+    overflow-y: scroll;
+    max-height: calc(100% - 88px);
+  }
+}
+
+.left-pane-placeholder {
+  height: 100%;
+}
+.left-pane-wrapper {
+  height: 100%;
+}
+
+.conversation.placeholder {
+  text-align: center;
+  user-select: none;
+
+  .container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content {
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: large;
+  }
+}
+
+.call-manager-wrapper {
+  position: relative;
+}
