@@ -35,6 +35,8 @@ For a more detailed version, see [Docker X11 on MacOS](https://gist.github.com/p
 
 #### Windows
 
+>If you have problem forwarding the X requests from Docker to your Windows host can refer to this video [Fixing X server forwarding on Windows](https://youtu.be/KH36_s7CgFI)
+
 Download [VcXsrv](https://sourceforge.net/projects/vcxsrv/) and install it like a normal application
 
 After that open VcXsrv from your start menu, it will prompt a installation-like window, just click next and ensure that these 2 options are left unchecked:
@@ -97,7 +99,8 @@ So I recommend just use the following command in the project root to avoid any w
 docker run -d -e DISPLAY=host.docker.internal:0 --name sqat --security-opt seccomp=chrome.json marcustut/sqat:0.1.3
 
 # for windows
-docker run -d -e DISPLAY=host.docker.internal:0.0 -e LIBGL_ALWAYS_INDIRECT=0 --name sqat --security-opt seccomp=chrome.json marcustut/sqat:0.1.3
+# you can check your ip address using `ipconfig` in cmd
+docker run -d -e DISPLAY=<your-ip-address>:0.0 -e LIBGL_ALWAYS_INDIRECT=0 --name sqat --security-opt seccomp=chrome.json marcustut/sqat:0.1.3
 
 # Note that `marcustut/sqat:0.1.3` is the image name here, so if you have a different version or name just change it
 # Note that remember to run with the --security-opt flag, this is to give allow the guest os permissions for Chromium and this is required
