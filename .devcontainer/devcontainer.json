@@ -1,0 +1,14 @@
+{
+  "name": "sqat",
+  "workspaceFolder": "/sqat/Signal-Desktop",
+"remoteUser": "node",
+"build": {
+	"dockerfile": "Dockerfile",
+	"args": {
+		"VARIANT": "14"
+	}
+},
+"extensions": [
+	"dbaeumer.vscode-eslint"
+]
+}
