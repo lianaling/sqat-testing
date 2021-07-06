@@ -102,6 +102,11 @@ docker run -d -e DISPLAY=host.docker.internal:0 --name sqat --security-opt secco
 # you can check your ip address using `ipconfig` in cmd
 docker run -d -e DISPLAY=<your-ip-address>:0.0 -e LIBGL_ALWAYS_INDIRECT=0 --name sqat --security-opt seccomp=chrome.json marcustut/sqat:0.1.3
 
+# for linux
+# also for the X server to accept requests from the container
+# you have to run `xhost +` first before docker run
+docker run -d -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro --name sqat --security-opt seccomp=chrome.json marcustut/sqat:0.1.3
+
 # Note that `marcustut/sqat:0.1.3` is the image name here, so if you have a different version or name just change it
 # Note that remember to run with the --security-opt flag, this is to give allow the guest os permissions for Chromium and this is required
 ```
